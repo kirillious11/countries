@@ -18,6 +18,7 @@ function App() {
     axios.get(URL_API).then(({ data }) => {
       setCountries(data);
       setLoading(false);
+      setCountryInfo(activeIdCountry);
     });
   }
 
@@ -31,7 +32,6 @@ function App() {
     const currentCountry = countries.filter(
       ({ area }) => area === activeIdCountry
     );
-    console.log(currentCountry[0]);
     setCountryInfo(currentCountry);
   };
 
