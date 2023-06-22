@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 import Countries from "../countries/Countries";
@@ -7,10 +6,12 @@ import CountriesInfo from "../countriesInfo/CountriesInfo";
 
 import "./App.css";
 
+const URL_API = "https://restcountries.com/v3.1/all";
+
 function App() {
   const [countries, setCountries] = useState([]);
-  const [activeIdCountry, setActiveIdCountry] = useState(464);
-  const [countryInfo, setCountryInfo] = useState(null);
+  const [activeIdCountry, setActiveIdCountry] = useState(null);
+  const [activeCountry, setActiveCountry] = useState(null);
   const [loading, setLoading] = useState(true);
 
   function fetchCountries() {
@@ -18,13 +19,12 @@ function App() {
     axios.get(URL_API).then(({ data }) => {
       setCountries(data);
       setLoading(false);
-      setCountryInfo(activeIdCountry);
     });
   }
 
   useEffect(() => {
     fetchCountries();
-  }, [activeIdCountry]);
+  }, []);
 
   const handleClick = (id) => {
     setCountryInfo(id);
@@ -32,6 +32,7 @@ function App() {
     const currentCountry = countries.filter(
       ({ area }) => area === activeIdCountry
     );
+    console.log(currentCountry[0]);
     setCountryInfo(currentCountry);
   };
 
@@ -41,15 +42,15 @@ function App() {
       <div className="app__container countries">
         <div className="countries__body">
           {/* {countries.length && (
-            <>
-              <Countries
-                countries={countries}
-                handleClick={handleClick}
-                activeIdCountry={activeIdCountry}
-              />
-              <CountriesInfo countryInfo={countryInfo} />
-            </>
-          )} */}
+					 <>
+					 <Countries
+					 countries={countries}
+					 handleClick={handleClick}
+					 activeIdCountry={activeIdCountry}
+					 />
+					 <CountriesInfo countryInfo={countryInfo} />
+					 </>
+					 )} */}
           {loading ? (
             <span>Loading...</span>
           ) : (
@@ -59,7 +60,7 @@ function App() {
                 handleClick={handleClick}
                 activeIdCountry={activeIdCountry}
               />
-              <CountriesInfo countryInfo={countryInfo} />
+              <CountriesInfo activeCountry={activeCountry} />
             </>
           )}
         </div>

@@ -1,10 +1,12 @@
-import "./countriesInfo.css";
+import './countriesInfo.css';
+
+const InfoCountry = ({ activeCountry: { flags, altSpellings, name, region, timezones, languages} }) => {
 
 const InfoCountry = ({ countryInfo }) => {
-  console.log(countryInfo);
+  // console.log(countryInfo);
   return (
     <>
-      {/* <div>Текущая страна: {countryInfo[0].name?.common}</div> */}
+      {/* <div>Текущая страна: {countryInfo.name?.common}</div> */}
       {/* <div className="info">
         <div className="info__container">
           <span className="info__flag">{countryInfo.flags?.png}</span>
