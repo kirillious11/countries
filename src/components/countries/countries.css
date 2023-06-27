@@ -11,7 +11,8 @@
 .country__item {
   min-height: 80px;
   padding: 10px;
-  box-shadow: -23px 9px 45px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 0px 0px rgb(255, 255, 255);
+  border: 1px solid rgba(179, 214, 50, 0.2);
   border-radius: 10px;
   display: flex;
   align-items: center;

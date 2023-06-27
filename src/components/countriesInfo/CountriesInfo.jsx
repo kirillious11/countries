@@ -3,6 +3,9 @@ import "./countriesInfo.css";
 const InfoCountry = ({
   activeCountry: { flags, altSpellings, name, region, timezones, languages },
 }) => {
+  // if (!languages) {
+  //   return <span>Нет языка</span>;
+  // }
   return (
     <div className="info">
       <div className="info__container">
@@ -16,7 +19,12 @@ const InfoCountry = ({
         <div className="info-down">
           <span>{region}</span>
           <span>{timezones?.[0]}</span>
-          <span>{languages?.[0]}</span>
+          {/* <span>{Object.values(languages)[0]}</span> */}
+          <span>
+            {!languages === true
+              ? "Language not specified"
+              : Object.values(languages)[0]}
+          </span>
         </div>
       </div>
     </div>

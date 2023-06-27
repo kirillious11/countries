@@ -1,4 +1,4 @@
-.countries__info {
+.info {
   margin: 0 auto;
   align-self: baseline;
   max-width: 500px;
@@ -9,11 +9,11 @@
   border: 2px solid #d4dfdf;
 }
 
-.countries__info-container {
+.info__container {
   padding: 15px;
 }
 
-.countries__info-flag {
+.info__flag {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,16 +22,17 @@
   height: 130px;
   background-color: #d4dfdf;
   border-radius: 50%;
+  overflow: hidden;
 }
 
-.countries__info-up {
+.info-up {
   margin-top: 30px;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.countries__info-down {
+.info-down {
   margin-top: 30px;
   display: flex;
   justify-content: space-around;

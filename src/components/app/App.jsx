@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Pagination from "@mui/material/Pagination";
 
 import Countries from "../countries/Countries";
 import CountriesInfo from "../countriesInfo/CountriesInfo";
+import Skeleton from "../skeleton/Skeleton";
 
 import "./App.css";
 
@@ -13,6 +15,14 @@ function App() {
   const [activeIdCountry, setActiveIdCountry] = useState(null);
   const [activeCountry, setActiveCountry] = useState(null);
   const [loading, setLoading] = useState(true);
+  console.log(activeCountry);
+
+  const [page, setPage] = useState(1);
+  const [countriesPerPage] = useState(8);
+
+  const handleChangePage = (event, value) => {
+    setPage(value);
+  };
 
   const getActiveCountry = (countries, id) => {
     const [activeCountry] = countries.filter(({ area }) => area === id);
@@ -37,23 +47,40 @@ function App() {
     setActiveCountry(getActiveCountry(countries, id));
   };
 
+  const indexOfLastCountry = page * countriesPerPage;
+  const indexOfFirstPost = indexOfLastCountry - countriesPerPage;
+  const currentCountries = countries.slice(
+    indexOfFirstPost,
+    indexOfLastCountry
+  );
+
+  const totalPages = Math.ceil(countries.length / countriesPerPage);
+
   return (
     <div className="app">
       <h1>Countries</h1>
       <div className="app__container countries">
         <div className="countries__body">
           {loading ? (
-            <span>Loading...</span>
+            <Skeleton />
           ) : (
             <>
               <Countries
-                countries={countries}
+                countries={currentCountries}
                 handleClick={handleClick}
                 activeIdCountry={activeIdCountry}
               />
               <CountriesInfo activeCountry={activeCountry} />
             </>
           )}
+        </div>
+        <div className="countries__pagination">
+          <Pagination
+            className="countries__pagination-item"
+            count={totalPages}
+            page={page}
+            onChange={handleChangePage}
+          />
         </div>
       </div>
     </div>
