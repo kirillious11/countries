@@ -15,10 +15,11 @@ function App() {
   const [activeIdCountry, setActiveIdCountry] = useState(null);
   const [activeCountry, setActiveCountry] = useState(null);
   const [loading, setLoading] = useState(true);
-  console.log(activeCountry);
 
   const [page, setPage] = useState(1);
   const [countriesPerPage] = useState(8);
+
+  const [searchCountry, setSearchCountry] = useState("");
 
   const handleChangePage = (event, value) => {
     setPage(value);
@@ -47,19 +48,34 @@ function App() {
     setActiveCountry(getActiveCountry(countries, id));
   };
 
+  const searchCountryInput = (e) => {
+    setSearchCountry(e.target.value);
+  };
+
+  const filteredCountry = countries.filter(({ name }) => {
+    return name.common.toLowerCase().includes(searchCountry.toLowerCase());
+  });
+
   const indexOfLastCountry = page * countriesPerPage;
   const indexOfFirstPost = indexOfLastCountry - countriesPerPage;
-  const currentCountries = countries.slice(
+  const currentCountries = filteredCountry.slice(
     indexOfFirstPost,
     indexOfLastCountry
   );
 
-  const totalPages = Math.ceil(countries.length / countriesPerPage);
+  console.log(filteredCountry);
+  const totalPages = Math.ceil(filteredCountry.length / countriesPerPage);
 
   return (
     <div className="app">
       <h1>Countries</h1>
       <div className="app__container countries">
+        <input
+          onChange={searchCountryInput}
+          className="countries__search"
+          type="text"
+          placeholder="Search country..."
+        />
         <div className="countries__body">
           {loading ? (
             <Skeleton />

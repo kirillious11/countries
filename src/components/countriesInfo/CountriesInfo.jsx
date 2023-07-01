@@ -19,7 +19,6 @@ const InfoCountry = ({
         <div className="info-down">
           <span>{region}</span>
           <span>{timezones?.[0]}</span>
-          {/* <span>{Object.values(languages)[0]}</span> */}
           <span>
             {!languages === true
               ? "Language not specified"
