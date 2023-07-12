@@ -22,15 +22,6 @@ function App() {
 
   const [searchCountry, setSearchCountry] = useState("");
 
-  // const [regions, setRegions] = useState([
-  //   "Asia",
-  //   "Europe",
-  //   "Africa",
-  //   "Oceania",
-  //   "Americas",
-  //   "Antarctic",
-  // ]);
-
   const [countryRegionsId, setCountryRegionsId] = useState("all");
 
   const handleChangePage = (event, value) => {
