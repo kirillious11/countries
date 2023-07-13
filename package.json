@@ -2,7 +2,6 @@
   "name": "countries",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://kirillious11.github.io/countries",
   "type": "module",
   "scripts": {
     "dev": "vite",
