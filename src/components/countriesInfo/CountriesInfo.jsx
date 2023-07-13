@@ -11,9 +11,6 @@ const InfoCountry = ({
     capital,
   },
 }) => {
-  // if (!languages) {
-  //   return <span>Нет языка</span>;
-  // }
   return (
     <div className="info">
       <div className="info__container">

@@ -1,7 +1,4 @@
 .info {
-  /* position: fixed;
-  top: 200px;
-  right: 100px; */
   margin: 0 auto;
   align-self: baseline;
   max-width: 500px;
@@ -10,9 +7,9 @@
   box-shadow: -20px 20px 20px -1px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   border: 2px solid #d4dfdf;
-  position: fixed;
-  transform: translate(-100%);
-  right: 100px;
+  position: sticky;
+  top: 10px;
+  margin-bottom: 150px;
 }
 
 .info__container {
