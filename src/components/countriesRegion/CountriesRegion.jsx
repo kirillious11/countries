@@ -1,28 +1,18 @@
-import { useState } from "react";
 import "./countriesRegion.css";
 
-const CountriesRegion = ({ value, onClickCountryRegion }) => {
-  // console.log(value);
-  const [regions] = useState([
-    "All",
-    "Asia",
-    "Europe",
-    "Africa",
-    "Oceania",
-    "Americas",
-    "Antarctic",
-  ]);
-
+const CountriesRegion = ({ regions, value, onClickCountryRegion }) => {
   return (
     <ul className="regions__list">
       {regions.map((region, i) => {
         return (
           <li
             key={i}
-            onClick={() => onClickCountryRegion(region.toLowerCase())}
-            className="regions__item"
+            onClick={() => onClickCountryRegion(region.name.toLowerCase())}
+            className={`regions__item ${
+              value === region.name.toLowerCase() ? "active" : ""
+            }`}
           >
-            {region}
+            {region.name}
           </li>
         );
       })}

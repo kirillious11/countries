@@ -22,9 +22,20 @@ function App() {
 
   const [searchCountry, setSearchCountry] = useState("");
 
-  const [countryRegionsId, setCountryRegionsId] = useState("all");
+  const regions = [
+    { id: 1, name: "All" },
+    { id: 2, name: "Asia" },
+    { id: 3, name: "Europe" },
+    { id: 4, name: "Africa" },
+    { id: 5, name: "Oceania" },
+    { id: 6, name: "Americas" },
+    { id: 7, name: "Antarctic" },
+  ];
+  const [countryRegionsId, setCountryRegionsId] = useState(
+    regions[0].name.toLowerCase()
+  );
 
-  const handleChangePage = (event, value) => {
+  const handleChangePage = (_, value) => {
     setPage(value);
   };
 
@@ -42,7 +53,6 @@ function App() {
           countryRegionsId === "all" ? "all" : `region/${countryRegionsId}`
         }`
       );
-      console.log(countryRegionsId);
       setCountries(data);
       setActiveCountry(getActiveCountry(data, data[0].area));
       setActiveIdCountry(data[0].area);
@@ -84,6 +94,7 @@ function App() {
             placeholder="Search country..."
           />
           <CountriesRegion
+            regions={regions}
             value={countryRegionsId}
             onClickCountryRegion={(i) => setCountryRegionsId(i)}
           />
